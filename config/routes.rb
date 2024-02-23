@@ -1,18 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/unsubscribe'
-  end
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
   devise_for :admin, skip: [:registrations], controllers: {
     sessions: "admin/sessions"
   }
@@ -23,9 +9,8 @@ Rails.application.routes.draw do
   }
   
   scope module: :public do
-    root to: "events#index"
-    get '/top' => 'homes#top'
-    get 'about' => 'homes#about', as: :about
+    root to: "homes#top"
+    get 'homes/about' => 'homes#about', as: :about
     resources :users, only: [:show, :edit, :update, :destroy] do
       member do
         get  'unsubscribe'
@@ -33,12 +18,16 @@ Rails.application.routes.draw do
     end
     
     resources :events
-      resource :favorite, only: [:create, :destroy]
+      resource :favorite, only: [:ceate, :destroy]
     end
     
   namespace :admin do
     root to: "users#index"
     resources :users, only: [:index, :show, :edit, :update]
+  end
+  
+  devise_scope :user do
+    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
      
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
