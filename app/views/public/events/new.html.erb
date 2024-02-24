@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <h3 class="col-md-6 text-center">Live情報</h3>
+  </div>
+  
+  
+  <div class="row">
+    <div class="col-md-6 d-flex justify-content-center">
+      <%= form_with model: @event do |f| %>
+      <table class="table table-borderless">
+        <tr>
+          <td>アーティスト名</td>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <td>日時</td>
+          <td><%= f.date_field :event_date %></td>
+        </tr>
+        <tr>
+          <td>会場</td>
+          <td><%= f.text_field :place %></td>
+        </tr>
+        <tr>
+          <td>ツアー・ライブ名</td>
+          <td><%= f.text_field :title %></td>
+        </tr>
+        <tr>
+          <td>開場</td>
+          <td><%= f.text_field :open %></td>
+        </tr>
+        <tr>
+          <td>開演</td>
+          <td><%= f.text_field :start %></td>
+        </tr>
+        <tr>
+          <td>チケット料金</td>
+          <td><%= f.text_field :price %></td>
+        </tr>
+        <tr>
+          <td>チケット購入</td>
+          <td>
+            <%= f.radio_button :buy_method, Event.buy_methods.key(0) %>
+            <%=f.label :buy_method_not_purchased, Event.buy_methods_i18n[:not_purchased] %>
+            <%= f.radio_button :buy_method, Event.buy_methods.key(1) %>
+            <%=f.label :buy_method_not_purchased, Event.buy_methods_i18n[:purchased] %>
+          </td>
+        </tr>
+        <tr>
+          <td>チケット画像</td>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+        <tr>
+          <td>座席</td>
+          <td><%= f.text_field :seet %></td>
+        </tr>
+        <tr>
+          <td>交通手段</td>
+          <td><%= f.text_field :transportation %></td>
+        </tr>
+        <tr>
+          <td>宿泊先</td>
+          <td><%= f.text_field :stay %></td>
+        </tr>
+        <tr>
+          <td>感想</td>
+          <td><%= f.text_field :impression %></td>
+        </tr>
+        <tr>
+          <td>セットリスト</td>
+          <td><%= f.text_field :setlist %></td>
+        </tr>
+        </table>
+        <%= f.submit '保存', class: "btn btn-primary" %>
+        <% end %>
+    </div>
+  </div>
+</div>

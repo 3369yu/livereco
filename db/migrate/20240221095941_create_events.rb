@@ -11,6 +11,7 @@ class CreateEvents < ActiveRecord::Migration[6.1]
       t.string :title
       t.string :price
       t.string :buy
+      t.string :img
       t.string :seet
       t.string :transportation
       t.string :stay
