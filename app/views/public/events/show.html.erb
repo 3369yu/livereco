@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <h3 class="col-md-6 text-center">参戦記録</h3>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6 d-flex justify-content-center">
+      <%= form_with model: @event do |f| %>
+      <table class="table table-borderless">
+        <tr>
+          <td>アーティスト名</td>
+          <td><%= @event.name %></td>
+        </tr>
+        <tr>
+          <td>日時</td>
+          <td><%= @event.event_date %></td>
+        </tr>
+        <tr>
+          <td>会場</td>
+          <td><%= @event.place %></td>
+        </tr>
+        <tr>
+          <td>ツアー・ライブ名</td>
+          <td><%= @event.title %></td>
+        </tr>
+        <tr>
+          <td>開場</td>
+          <td><%= @event.open %></td>
+        </tr>
+        <tr>
+          <td>開演</td>
+          <td><%= @event.start %></td>
+        </tr>
+        <tr>
+          <td>チケット料金</td>
+          <td><%= @event.price %></td>
+        </tr>
+        <tr>
+          <td>チケット購入</td>
+          <td>
+            <%= f.radio_button :buy_method, Event.buy_methods.key(0) %>
+            <%=f.label :buy_method_not_purchased, Event.buy_methods_i18n[:not_purchased] %>
+            <%= f.radio_button :buy_method, Event.buy_methods.key(1) %>
+            <%=f.label :buy_method_not_purchased, Event.buy_methods_i18n[:purchased] %>
+          </td>
+        </tr>
+        <tr>
+          <td>チケット画像</td>
+          <td><%= iamge_tag @event.img, size: "100x100" %></td>
+        </tr>
+        <tr>
+          <td>座席</td>
+          <td><%= @event.seet %></td>
+        </tr>
+        <tr>
+          <td>交通手段</td>
+          <td><%= @event.transportation %></td>
+        </tr>
+        <tr>
+          <td>宿泊先</td>
+          <td><%= @event.stay %></td>
+        </tr>
+        <tr>
+          <td>感想</td>
+          <td><%= @event.impression %></td>
+        </tr>
+        <tr>
+          <td>セットリスト</td>
+          <td><%= @event.setlist %></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+</div>
