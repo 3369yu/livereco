@@ -5,7 +5,6 @@
   
   <div class="row">
     <div class="col-md-6 d-flex justify-content-center">
-      <%= form_with model: @event do |f| %>
       <table class="table table-borderless">
         <tr>
           <td>アーティスト名</td>
@@ -13,7 +12,7 @@
         </tr>
         <tr>
           <td>日時</td>
-          <td><%= @event.event_date %></td>
+          <td><%= @event.event_data %></td>
         </tr>
         <tr>
           <td>会場</td>
@@ -38,15 +37,27 @@
         <tr>
           <td>チケット購入</td>
           <td>
-            <%= f.radio_button :buy_method, Event.buy_methods.key(0) %>
-            <%=f.label :buy_method_not_purchased, Event.buy_methods_i18n[:not_purchased] %>
-            <%= f.radio_button :buy_method, Event.buy_methods.key(1) %>
-            <%=f.label :buy_method_not_purchased, Event.buy_methods_i18n[:purchased] %>
+            <% if @event.buy == 0 %>
+            <%= radio_button_tag :buy, Event.buys.key(0), checked: true %>
+            <%= label :buy_no_purchased, Event.buys_i18n[:not_purchased] %>
+            <%= radio_button_tag :buy, Event.buys.key(1) %>
+            <%= label :buy_purchased, Event.buys_i18n[:purchased] %>
+            <% elsif @event.buy == 1 %>
+            <%= radio_button_tag :buy, Event.buys.key(0) %>
+            <%= label :buy_no_purchased, Event.buys_i18n[:not_purchased] %>
+            <%= radio_button_tag :buy, Event.buys.key(1), checked: true %>
+            <%= label :buy_purchased, Event.buys_i18n[:purchased] %>
+            <% else %>
+            <%= radio_button_tag :buy, Event.buys.key(0) %>
+            <%= label :buy_no_purchased, Event.buys_i18n[:not_purchased] %>
+            <%= radio_button_tag :buy, Event.buys.key(1) %>
+            <%= label :buy_purchased, Event.buys_i18n[:purchased] %>
+            <% end %>
           </td>
         </tr>
         <tr>
           <td>チケット画像</td>
-          <td><%= iamge_tag @event.img, size: "100x100" %></td>
+          <td><%= image_tag @event.get_image(100,100) %></td>
         </tr>
         <tr>
           <td>座席</td>

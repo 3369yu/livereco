@@ -1,9 +1,9 @@
 ja:
   enums:
     event:
-      buy_method:
-        not_purchased: "未"
-        purchased: "済"
+      buy:
+        no_buy: "未"
+        buy: "済"
   activerecord:
     errors:
       messages:

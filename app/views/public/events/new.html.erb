@@ -14,7 +14,7 @@
         </tr>
         <tr>
           <td>日時</td>
-          <td><%= f.date_field :event_date %></td>
+          <td><%= f.date_field :event_data %></td>
         </tr>
         <tr>
           <td>会場</td>
@@ -39,10 +39,10 @@
         <tr>
           <td>チケット購入</td>
           <td>
-            <%= f.radio_button :buy_method, Event.buy_methods.key(0) %>
-            <%=f.label :buy_method_not_purchased, Event.buy_methods_i18n[:not_purchased] %>
-            <%= f.radio_button :buy_method, Event.buy_methods.key(1) %>
-            <%=f.label :buy_method_not_purchased, Event.buy_methods_i18n[:purchased] %>
+            <%= f.radio_button :buy, Event.buys.key(0) %>
+            <%=f.label :buy_no_buy, Event.buys_i18n[:no_buy] %>
+            <%= f.radio_button :buy, Event.buys.key(1) %>
+            <%=f.label :buy_buy, Event.buys_i18n[:buy] %>
           </td>
         </tr>
         <tr>
