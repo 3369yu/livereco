@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2024_02_24_060134) do
     t.string "start"
     t.string "title"
     t.string "price"
-    t.string "buy"
+    t.integer "buy"
     t.string "img"
     t.string "seet"
     t.string "transportation"

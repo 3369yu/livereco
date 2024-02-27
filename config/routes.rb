@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
     
     resources :events
-      resource :favorite, only: [:ceate, :destroy]
+      resource :favorite, only: [:create, :destroy]
     end
     
   namespace :admin do

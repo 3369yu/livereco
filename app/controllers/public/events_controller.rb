@@ -24,14 +24,43 @@ class Public::EventsController < ApplicationController
   end
 
   def edit
+    is_matching_login_user
+    @event = Event.find(params[:id])
   end
 
   def update
+    is_matching_login_user
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      flash[:notice] = "編集しました"
+      redirect_to @event
+    else
+      render :edit
+    end
+  end
+  
+  def destroy
+    is_matching_login_user
+    event = Event.find(params[:id])
+    if event.destroy
+     flash[:notice] = "削除しました"
+      redirect_to events_path
+    else
+      render :edit
+    end
   end
 
   private
   def event_params
     params.require(:event).permit(:name, :event_data, :place, :open, :start, :title, :price, :buy, :imag, :seet, :transportation, :stay, :impression, :setlist, :is_active)
+  end
+  
+  def is_matching_login_user
+    event = Event.find(params[:id])
+    user = event.user
+    unless user.id == current_user.id
+      redirect_to events_path
+    end
   end
 
 end

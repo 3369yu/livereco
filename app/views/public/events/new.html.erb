@@ -40,9 +40,9 @@
           <td>チケット購入</td>
           <td>
             <%= f.radio_button :buy, Event.buys.key(0) %>
-            <%=f.label :buy_no_buy, Event.buys_i18n[:no_buy] %>
+            <%= f.label :buy_no_buy, Event.buys_i18n[:no_buy] %>
             <%= f.radio_button :buy, Event.buys.key(1) %>
-            <%=f.label :buy_buy, Event.buys_i18n[:buy] %>
+            <%= f.label :buy_buy, Event.buys_i18n[:buy] %>
           </td>
         </tr>
         <tr>
