@@ -16,7 +16,12 @@ class Public::EventsController < ApplicationController
   end
 
   def index
+    if params[:name]
+      @name = params[:name]
+      @event = Event.where(['name LIKE ?', "%#{@name}%"])
+    else
     @event = Event.all
+  end
   end
 
   def show
