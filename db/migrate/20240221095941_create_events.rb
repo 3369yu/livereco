@@ -11,13 +11,12 @@ class CreateEvents < ActiveRecord::Migration[6.1]
       t.string :title
       t.string :price
       t.integer :buy
-      t.string :img
       t.string :seet
       t.string :transportation
       t.string :stay
       t.text :impression
       t.text :setlist
-      t.boolean :is_active, null: false, default: "false"
+      t.integer :status, null: false, default: 0
 
       t.timestamps
     end

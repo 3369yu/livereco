@@ -20,8 +20,8 @@ class Public::EventsController < ApplicationController
       @name = params[:name]
       @event = Event.where(['name LIKE ?', "%#{@name}%"])
     else
-    @event = Event.all
-  end
+      @event = Event.all
+    end
   end
 
   def show
@@ -57,7 +57,7 @@ class Public::EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:name, :event_data, :place, :open, :start, :title, :price, :buy, :imag, :seet, :transportation, :stay, :impression, :setlist, :is_active)
+    params.require(:event).permit(:name, :event_data, :place, :open, :start, :title, :price, :buy, :image, :seet, :transportation, :stay, :impression, :setlist, :status)
   end
   
   def is_matching_login_user

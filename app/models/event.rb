@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   belongs_to :user
 
   enum buy: { no_buy: 0, buy: 1 }
+  enum status: { closed: 0, open: 1 }
   
   def get_image(width, height)
     unless image.attached?

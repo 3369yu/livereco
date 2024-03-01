@@ -62,13 +62,12 @@ ActiveRecord::Schema.define(version: 2024_02_24_060134) do
     t.string "title"
     t.string "price"
     t.integer "buy"
-    t.string "img"
     t.string "seet"
     t.string "transportation"
     t.string "stay"
     t.text "impression"
     t.text "setlist"
-    t.boolean "is_active", default: false, null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
