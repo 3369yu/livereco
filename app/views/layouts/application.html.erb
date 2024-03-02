@@ -42,11 +42,14 @@
                   <%= link_to "新規スケジュール", new_event_path, class: "mr-3" %>
                 </li>
                 <li class="nav-item">
+                  <%= link_to "参戦履歴", history_events_path, class: "mr-3" %>
+                </li>
+                <li class="nav-item">
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "mr-3" %>
                 </li>
                 <div class="text-right mt-2">
                   <form class="right-block mb-3" role="search">
-                    <%= form_with url: events_path, method: :get do |f| %>
+                    <%= form_with url: history_events_path, method: :get do |f| %>
                     <%= f.text_field :name, placeholder:"Search" %>
                     <%= f.submit'検索'%>
                     <% end %>
@@ -64,7 +67,7 @@
                 </li>
                 <div class="text-right mt-2">
                   <form class="right-block mb-3" role="search">
-                    <%= form_with url: events_path, method: :get do |f| %>
+                    <%= form_with url: history_events_path, method: :get do |f| %>
                     <%= f.text_field :name, placeholder:"Search" %>
                     <%= f.submit'検索'%>
                     <% end %>

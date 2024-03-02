@@ -17,8 +17,12 @@ Rails.application.routes.draw do
       end
     end
     
-    resources :events
+    resources :events do
+      collection do
+        get 'history'
       resource :favorite, only: [:create, :destroy]
+      end
+    end
     end
     
   namespace :admin do

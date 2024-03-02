@@ -54,6 +54,16 @@ class Public::EventsController < ApplicationController
       render :edit
     end
   end
+  
+  def history
+    is_matchimg_login_user && event_status
+    if params[:name]
+      @name = params[:name]
+      @event = Event.where(['name LIKE ?', "%#{@name}%"])
+    else
+      @event = Event.all
+    end
+  end
 
   private
   def event_params
@@ -63,7 +73,14 @@ class Public::EventsController < ApplicationController
   def is_matching_login_user
     event = Event.find(params[:id])
     user = event.user
-    unless user.id == current_user.id
+    if user.id == current_user.id
+      redirect_to events_path
+    end
+  end
+  
+  def event_status
+    event = Event.find(params[:id])
+    if event.status_i18n == "未公開"
       redirect_to events_path
     end
   end
