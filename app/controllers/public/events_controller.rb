@@ -16,12 +16,7 @@ class Public::EventsController < ApplicationController
   end
 
   def index
-    if params[:name]
-      @name = params[:name]
-      @event = Event.where(['name LIKE ?', "%#{@name}%"])
-    else
-      @event = Event.all
-    end
+    @event = Event.where(user_id: current_user.id).includes(:user).order(event_data: "DESC")
   end
 
   def show
@@ -29,12 +24,12 @@ class Public::EventsController < ApplicationController
   end
 
   def edit
-    is_matching_login_user
+    ensure_correct_user
     @event = Event.find(params[:id])
   end
 
   def update
-    is_matching_login_user
+    ensure_correct_user
     @event = Event.find(params[:id])
     if @event.update(event_params)
       flash[:notice] = "編集しました"
@@ -43,9 +38,9 @@ class Public::EventsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
-    is_matching_login_user
+    ensure_correct_user
     event = Event.find(params[:id])
     if event.destroy
      flash[:notice] = "削除しました"
@@ -54,33 +49,36 @@ class Public::EventsController < ApplicationController
       render :edit
     end
   end
-  
+
   def history
-    is_matchimg_login_user && event_status
+    events = Event.all
+      events.each do |event|
+    return if event.status == "open" && event.user_id != current_user.id
+      @event = Event.where(status_i18n: "公開")
     if params[:name]
       @name = params[:name]
       @event = Event.where(['name LIKE ?', "%#{@name}%"])
     else
-      @event = Event.all
+      @event = Event.where(user_id: current_user.id).includes(:user)
     end
+  end
   end
 
   private
   def event_params
     params.require(:event).permit(:name, :event_data, :place, :open, :start, :title, :price, :buy, :image, :seet, :transportation, :stay, :impression, :setlist, :status)
   end
-  
-  def is_matching_login_user
+
+  def ensure_correct_user
     event = Event.find(params[:id])
-    user = event.user
-    if user.id == current_user.id
+    if event.user.id == current_user.id
       redirect_to events_path
     end
   end
-  
+
   def event_status
     event = Event.find(params[:id])
-    if event.status_i18n == "未公開"
+    if event.status_i18n == "非公開"
       redirect_to events_path
     end
   end

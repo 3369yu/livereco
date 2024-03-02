@@ -39,19 +39,7 @@
         </tr>
         <tr>
           <td>チケット購入</td>
-          <td>
-            <% if @event.buy_i18n == "未" %>
-            <%= radio_button_tag "buy", "no_buy", checked: true %>
-            <%= label_tag "buy", Event.buys_i18n[:no_buy], for: "buy_no_buy" %>
-            <%= radio_button_tag "buy", "buy" %>
-            <%= label_tag "buy", Event.buys_i18n[:buy], for: "buy_buy" %>
-            <% elsif @event.buy_i18n == "済" %>
-            <%= radio_button_tag "buy", "no_buy" %>
-            <%= label_tag "buy", Event.buys_i18n[:no_buy], for: "buy_no_buy" %>
-            <%= radio_button_tag "buy", "buy", checked: true %>
-            <%= label_tag "buy", Event.buys_i18n[:buy], for: "buy_buy" %>
-            <% end %>
-          </td>
+          <td><%= @event.buy_i18n %></td>
         </tr>
         <tr>
           <td>チケット画像</td>
@@ -76,6 +64,10 @@
         <tr>
           <td>セットリスト</td>
           <td><%= @event.setlist %></td>
+        </tr>
+        <tr>
+          <td>セットリストの公開</td>
+          <td><%= @event.status_i18n %></td>
         </tr>
         </table>
       </div>
