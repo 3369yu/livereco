@@ -1,2 +1,23 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h3 class="col-md-6 text-center"><%= @user.name %>さんの会員情報編集</h3>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6 d-flex justify-content-center">
+      <table class="table table-boderless">
+        <tr>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td><%= @user.email %> %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 d-flex justify-content-center">
+      <%= link_to "退会する", '/users/unsubscribe', class:"btn btn-danger" %>
+    </div>
+  </div>
+</div>
