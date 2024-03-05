@@ -12,4 +12,12 @@ class Admin::UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+  
+  def destory
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "退会しました。"
+    redirect_to :root
+  end
+  
 end

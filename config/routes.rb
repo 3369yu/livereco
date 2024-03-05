@@ -11,11 +11,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get 'homes/about' => 'homes#about', as: :about
-    resources :users, only: [:show, :edit, :update, :destroy] do
-      member do
-        get  'unsubscribe'
-      end
-    end
+    resources :users, only: [:show, :edit, :update, :destroy] 
     
     resources :events do
       collection do
@@ -27,7 +23,7 @@ Rails.application.routes.draw do
     
   namespace :admin do
     root to: "users#index"
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
   end
   
   devise_scope :user do

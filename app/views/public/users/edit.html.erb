@@ -1,2 +1,30 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h3 class="col-md-6 text-center"><%= @user.name %>さんの会員情報編集</h3>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_with model: @user do |f| %>
+      <%= image_tag @user.get_profile_image(100,100) %>
+      <%= f.file_field :profile_image %>
+      <table class="table table-borderless">
+        <tr>
+          <td>ユーザー名</td>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= f.email_field :email %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 d-flex justify-content-center">
+      <%= f.submit "保存", class: "btn btn-primary md-3" %>
+      <%= link_to "退会する", user_path(current_user.id), method: :delete, "data-confirm" =>"本当に消しますか？", class: "btn btn-danger ml-2" %>
+    </div>
+  </div>
+  <% end %>
+</div>
