@@ -1,4 +1,5 @@
 class Public::EventsController < ApplicationController
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def new
     @event = Event.new
@@ -21,15 +22,16 @@ class Public::EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    unless @event.user.id == current_user.id && @event.status_i18n == "非公開"
+      redirect_to events_path
+    end
   end
 
   def edit
-    ensure_correct_user
     @event = Event.find(params[:id])
   end
 
   def update
-    ensure_correct_user
     @event = Event.find(params[:id])
     if @event.update(event_params)
       flash[:notice] = "編集しました"
@@ -40,7 +42,6 @@ class Public::EventsController < ApplicationController
   end
 
   def destroy
-    ensure_correct_user
     event = Event.find(params[:id])
     if event.destroy
      flash[:notice] = "削除しました"
@@ -57,9 +58,9 @@ class Public::EventsController < ApplicationController
       @event = Event.where(status_i18n: "公開")
     if params[:name]
       @name = params[:name]
-      @event = Event.where(['name LIKE ?', "%#{@name}%"])
+      @event = Event.where(['name LIKE ?', "%#{@name}%"]).order(event_data: "DESC")
     else
-      @event = Event.where(user_id: current_user.id).includes(:user)
+      @event = Event.where(user_id: current_user.id).includes(:user).order(event_data: "DESC")
     end
   end
   end
@@ -71,14 +72,14 @@ class Public::EventsController < ApplicationController
 
   def ensure_correct_user
     event = Event.find(params[:id])
-    if event.user.id == current_user.id
+    unless event.user.id == current_user.id
       redirect_to events_path
     end
   end
 
   def event_status
     event = Event.find(params[:id])
-    if event.status_i18n == "非公開"
+    unless event.status_i18n == "非公開"
       redirect_to events_path
     end
   end

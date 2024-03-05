@@ -64,7 +64,7 @@
         </tr>
         <tr>
           <td>セットリスト</td>
-          <td><%= @event.setlist %></td>
+          <td><%= safe_join(@event.setlist.split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
           <td>セットリストの公開</td>

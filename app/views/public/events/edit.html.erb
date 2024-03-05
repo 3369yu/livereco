@@ -5,7 +5,7 @@
   <div class="row">
     <h3 class="col-md-6 text-center">Live記録</h3>
   </div>
-  
+
   <div class="row">
     <div class="col-md-6 d-flex justify-content-center">
       <%= form_with model: @event do |f| %>
@@ -69,7 +69,16 @@
         </tr>
         <tr>
           <td>セットリスト</td>
-          <td><%= f.text_field :setlist %></td>
+          <td><%= f.text_area :setlist %></td>
+        </tr>
+        <tr>
+          <td>セットリストの公開・非公開</td>
+          <td>
+            <%= f.radio_button :status, Event.statuses.key(0), checked: true %>
+            <%= f.label :status_closed, Event.statuses_i18n[:closed] %>
+            <%= f.radio_button :status, Event.statuses.key(1) %>
+            <%= f.label :status_open, Event.statuses_i18n[:open] %>
+          </td>
         </tr>
         </table>
         <%= f.submit "保存", class: "btn btn-primary" %>
@@ -78,4 +87,3 @@
     </div>
    </div>
 </div>
-  
