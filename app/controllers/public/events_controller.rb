@@ -59,10 +59,14 @@ class Public::EventsController < ApplicationController
     if params[:name]
       @name = params[:name]
       @event = Event.where(['name LIKE ?', "%#{@name}%"]).order(event_data: "DESC")
+    elsif params[:start_data] or params[:end_data]
+      @start_tada = params[:start_data]
+      @end_data = params[:end_data]
+      @event = Event.where(event_data: @start_data..@end_data)
     else
       @event = Event.where(user_id: current_user.id).includes(:user).order(event_data: "DESC")
     end
-  end
+    end
   end
 
   private
