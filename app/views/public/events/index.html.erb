@@ -15,7 +15,7 @@
         <th>Artist</th>
         </tr>
       </thead>
-      <% @event.each do |event| %>
+      <% @events.each do |event| %>
         <tr>
           <td>
           <%= link_to event_path(event.id) do %>

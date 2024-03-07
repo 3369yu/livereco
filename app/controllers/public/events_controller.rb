@@ -22,16 +22,18 @@ class Public::EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    unless @event.user.id == current_user.id && @event.status_i18n == "非公開"
+    if @event.user.id != current_user.id && @event.status_i18n == "非公開"
       redirect_to events_path
     end
   end
 
   def edit
+    ensure_correct_user
     @event = Event.find(params[:id])
   end
 
   def update
+    ensure_correct_user
     @event = Event.find(params[:id])
     if @event.update(event_params)
       flash[:notice] = "編集しました"
@@ -42,6 +44,7 @@ class Public::EventsController < ApplicationController
   end
 
   def destroy
+    ensure_correct_user
     event = Event.find(params[:id])
     if event.destroy
      flash[:notice] = "削除しました"
@@ -52,16 +55,13 @@ class Public::EventsController < ApplicationController
   end
 
   def history
-
-      #return if event.status == "open" && event.user_id != current_user.id
-    #@event = Event.where(status_i18n: "公開")
     if params[:name].present?
       @name = params[:name]
-      @events = Event.where(['name LIKE ?', "%#{@name}%"]).order(event_data: "DESC")
+      @events = Event.where(['name LIKE ?', "%#{@name}%"]).where(status: 'opened').order(event_data: "DESC")
     elsif params[:start_data].present? || params[:end_data].present?
       @start_data = Date.parse(params[:start_data])
       @end_data = Date.parse(params[:end_data])
-      @events = Event.where(event_data: @start_data..@end_data).where(status: 'opened')
+      @events = Event.where(event_data: @start_data..@end_data).where(status: 'opened').order(event_data: "DESC")
     else
       @events = current_user.events.order(event_data: "DESC")
       #Event.where(user_id: current_user.id)
@@ -76,13 +76,6 @@ class Public::EventsController < ApplicationController
   def ensure_correct_user
     event = Event.find(params[:id])
     unless event.user.id == current_user.id
-      redirect_to events_path
-    end
-  end
-
-  def event_status
-    event = Event.find(params[:id])
-    unless event.status_i18n == "非公開"
       redirect_to events_path
     end
   end

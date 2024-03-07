@@ -6,7 +6,7 @@ ja:
         buy: "済"
       status:
         closed: "非公開"
-        open: "公開"
+        opened: "公開"
   activerecord:
     errors:
       messages:

@@ -75,7 +75,7 @@
             <%= f.radio_button :status, Event.statuses.key(0), checked: true %>
             <%= f.label :status_closed, Event.statuses_i18n[:closed] %>
             <%= f.radio_button :status, Event.statuses.key(1) %>
-            <%= f.label :status_open, Event.statuses_i18n[:open] %>
+            <%= f.label :status_open, Event.statuses_i18n[:opened] %>
           </td>
         </tr>
         </table>
