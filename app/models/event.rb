@@ -6,7 +6,7 @@ class Event < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   enum buy: { no_buy: 0, buy: 1 }
-  enum status: { closed: 0, open: 1 }
+  enum status: { closed: 0, opened: 1 }
 
   def get_image(width, height)
     unless image.attached?

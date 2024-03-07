@@ -17,7 +17,7 @@ class Public::EventsController < ApplicationController
   end
 
   def index
-    @event = Event.where(user_id: current_user.id).includes(:user).order(event_data: "DESC")
+    @events = Event.where(user_id: current_user.id).includes(:user).order(event_data: "DESC")
   end
 
   def show
@@ -52,20 +52,19 @@ class Public::EventsController < ApplicationController
   end
 
   def history
-    events = Event.all
-      events.each do |event|
-    return if event.status == "open" && event.user_id != current_user.id
-      @event = Event.where(status_i18n: "公開")
-    if params[:name]
+
+      #return if event.status == "open" && event.user_id != current_user.id
+    #@event = Event.where(status_i18n: "公開")
+    if params[:name].present?
       @name = params[:name]
-      @event = Event.where(['name LIKE ?', "%#{@name}%"]).order(event_data: "DESC")
-    elsif params[:start_data] or params[:end_data]
-      @start_tada = params[:start_data]
-      @end_data = params[:end_data]
-      @event = Event.where(event_data: @start_data..@end_data)
+      @events = Event.where(['name LIKE ?', "%#{@name}%"]).order(event_data: "DESC")
+    elsif params[:start_data].present? || params[:end_data].present?
+      @start_data = Date.parse(params[:start_data])
+      @end_data = Date.parse(params[:end_data])
+      @events = Event.where(event_data: @start_data..@end_data).where(status: 'opened')
     else
-      @event = Event.where(user_id: current_user.id).includes(:user).order(event_data: "DESC")
-    end
+      @events = current_user.events.order(event_data: "DESC")
+      #Event.where(user_id: current_user.id)
     end
   end
 
