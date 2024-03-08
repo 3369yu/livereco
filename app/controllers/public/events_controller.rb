@@ -61,9 +61,9 @@ class Public::EventsController < ApplicationController
     elsif params[:start_data].present? || params[:end_data].present?
       @start_data = Date.parse(params[:start_data])
       @end_data = Date.parse(params[:end_data])
-      @events = Event.where(event_data: @start_data..@end_data).where(status: 'opened').order(event_data: "DESC")
+      @events = Event.where(event_data: @start_data..@end_data).where(status: 'opened').order(event_data: "DESC").page(params[:page])
     else
-      @events = current_user.events.order(event_data: "DESC")
+      @events = current_user.events.order(event_data: "DESC").page(params[:page])
       #Event.where(user_id: current_user.id)
     end
   end
