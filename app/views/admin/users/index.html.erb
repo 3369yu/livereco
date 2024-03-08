@@ -5,7 +5,7 @@
   <div class="row">
     <h3 class="col-md-6 text-center">ユーザー一覧</h3>
   </div>
-  
+
   <div class="row">
     <div class="col-md-6 d-flex justify-content-center">
       <table class="table table-bottom-boder">
@@ -15,7 +15,7 @@
         <th>ユーザー名</th>
         </tr>
       </thead>
-      <% @user.each do |user| %>
+      <% @users.each do |user| %>
         <tr>
           <td>
           <%= link_to admin_user_path(user.id) do %>
@@ -30,6 +30,11 @@
         </tr>
         <% end %>
       </table>
+    </div>
+  </div>
+  <div class="row">
+    <div col="col-md-6 text-center">
+      <%= paginate.@users %>
     </div>
   </div>
 </div>

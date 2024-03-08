@@ -57,7 +57,7 @@ class Public::EventsController < ApplicationController
   def history
     if params[:name].present?
       @name = params[:name]
-      @events = Event.where(['name LIKE ?', "%#{@name}%"]).where(status: 'opened').order(event_data: "DESC")
+      @events = Event.where(['name LIKE ?', "%#{@name}%"]).where(status: 'opened').order(event_data: "DESC").page(params[:page])
     elsif params[:start_data].present? || params[:end_data].present?
       @start_data = Date.parse(params[:start_data])
       @end_data = Date.parse(params[:end_data])
