@@ -17,7 +17,7 @@ class Public::EventsController < ApplicationController
   end
 
   def index
-    @events = Event.where(user_id: current_user.id).includes(:user).order(event_data: "DESC")
+    @events = Event.all
   end
 
   def show

@@ -3,31 +3,16 @@
     <div class="alert alert-success"><%= notice %></div>
   <% end %>
   <div class="row">
-    <h3 class="col-md-6 text-center">参戦一覧</h3>
+  <h3 class="col-md-12 text-center">参戦スケジュール</h3>
   </div>
-
+  
   <div class="row">
-    <div class="col-md-6 d-flex justify-content-center">
-      <table class="table table-bottom-boder">
-        <thead>
-        <tr>
-        <th>Data</th>
-        <th>Artist</th>
-        </tr>
-      </thead>
-      <% @events.each do |event| %>
-        <tr>
-          <td>
-          <%= link_to event_path(event.id) do %>
-          <%= event.event_data %>
-          <% end %>
-          </td>
-          <td>
-          <%= event.name %>
-          </td>
-        </tr>
-        <% end %>
-      </table>
+    <div class="col-md-12">
+      <script>
+        let eventData = <%= raw @events.to_json %>;
+      </script>
+  
+      <div id="calendar"></div>
     </div>
   </div>
 </div>
