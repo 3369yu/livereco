@@ -17,6 +17,14 @@ document.addEventListener('DOMContentLoaded', function() {
             calendar.changeView('dayGridMonth');
         }
     },
+    
+    dateClick: function(info){
+            //日付をクリックしたときのイベント(詳しくは次回の記事へ)
+    },
+    eventClick: function(info){
+            //表示されたイベントをクリックしたときのイベント(詳しくは次回の記事へ)
+    },
+    
   });
 
   calendar.render();
