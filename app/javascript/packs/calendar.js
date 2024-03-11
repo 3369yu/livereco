@@ -19,10 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     
     dateClick: function(info){
-            //日付をクリックしたときのイベント(詳しくは次回の記事へ)
+            //日付をクリックしたときのイベント
     },
     eventClick: function(info){
-            //表示されたイベントをクリックしたときのイベント(詳しくは次回の記事へ)
+            //表示されたイベントをクリックしたときのイベント
     },
     
   });
