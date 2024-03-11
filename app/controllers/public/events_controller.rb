@@ -63,8 +63,8 @@ class Public::EventsController < ApplicationController
       @name = params[:name]
       @events = Event.where(['name LIKE ?', "%#{@name}%"]).where(status: 'opened').order(event_data: "DESC").page(params[:page])
     elsif params[:start_data].present? || params[:end_data].present?
-      @start_data = Date.parse(params[:start_data])
-      @end_data = Date.parse(params[:end_data])
+      @start_data = DateTime.parse(params[:start_data])
+      @end_data = DateTime.parse.parse(params[:end_data])
       @events = Event.where(event_data: @start_data..@end_data).where(status: 'opened').order(event_data: "DESC").page(params[:page])
     else
       @events = current_user.events.order(event_data: "DESC").page(params[:page])
@@ -74,7 +74,7 @@ class Public::EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:name, :event_data, :place, :open, :start, :title, :price, :buy, :image, :seet, :transportation, :stay, :impression, :setlist, :status)
+    params.require(:event).permit(:name, :event_data, :place, :open, :start, :end, :title, :price, :buy, :image, :seet, :transportation, :stay, :impression, :setlist, :status)
   end
 
   def ensure_correct_user
