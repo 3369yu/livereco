@@ -6,7 +6,7 @@ json.array!(@events) do |event|
   json.place event.place
   json.open event.open
   json.start event.start.in_time_zone('Tokyo')
-  json.end event.end
+  json.end event.end.in_time_zone('Tokyo')
   json.title event.title
   json.price event.price
   json.buy event.buy
