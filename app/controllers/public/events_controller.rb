@@ -61,13 +61,13 @@ class Public::EventsController < ApplicationController
   def history
     if params[:name].present?
       @name = params[:name]
-      @events = Event.where(['name LIKE ?', "%#{@name}%"]).where(status: 'opened').order(event_data: "DESC").page(params[:page])
+      @events = Event.where(['name LIKE ?', "%#{@name}%"]).where(status: 'opened').order(start: "DESC").page(params[:page])
     elsif params[:start_data].present? || params[:end_data].present?
       @start_data = DateTime.parse(params[:start_data])
       @end_data = DateTime.parse.parse(params[:end_data])
-      @events = Event.where(event_data: @start_data..@end_data).where(status: 'opened').order(event_data: "DESC").page(params[:page])
+      @events = Event.where(event_data: @start_data..@end_data).where(status: 'opened').order(start: "DESC").page(params[:page])
     else
-      @events = current_user.events.order(event_data: "DESC").page(params[:page])
+      @events = current_user.events.order(start: "DESC").page(params[:page])
       #Event.where(user_id: current_user.id)
     end
   end
