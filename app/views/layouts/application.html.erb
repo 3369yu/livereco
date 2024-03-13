@@ -51,7 +51,7 @@
                   <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "mr-3" %>
                 </li>
                 <div class="text-right mt-2">
-                  <form class="right-block mb-3" role="search">
+                  <form class="right-block mb-3">
                     <%= form_with url: history_events_path, method: :get do |f| %>
                     <%= f.text_field :name, placeholder:"アーティスト名を入力" %>
                     <%= f.submit'検索'%>
@@ -70,8 +70,8 @@
                 </li>
                 <div class="text-right mt-2">
                   <form class="right-block mb-3">
-                    <%= form_with url: history_events_path, method: :get do |f| %>
-                    <%= f.text_field :event_name, placeholder:"Search" %>
+                    <%= form_with url: 'events/history', method: :get do |f| %>
+                    <%= f.text_field :name, placeholder:"Search" %>
                     <%= f.submit'検索'%>
                     <% end %>
                   </form>

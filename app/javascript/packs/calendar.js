@@ -17,20 +17,23 @@ document.addEventListener('DOMContentLoaded', function() {
             calendar.changeView('dayGridMonth');
         }
     },
-    
+
     headerToolbar: {
           start: '',
           center: 'title',
-          end: 'today prev,next' 
+          end: 'today prev,next'
     },
     allDayText: '終日',
-    height: "auto",
 
-    dateClick: function(info){
-            //日付をクリックしたときのイベント
+    //日付をクリックしたときのイベント
+    dateClick: function(info) {
+        var clickedDate = info.dateStr;
+        location.href = '/event/new?date=' + clickedDate;
     },
+
+     //表示されたイベントをクリックしたときのイベント
     eventClick: function(info){
-            //表示されたイベントをクリックしたときのイベント
+           
     },
 
   });
