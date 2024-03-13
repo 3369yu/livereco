@@ -27,7 +27,7 @@
         <tr>
           <td>
           <%= link_to event_path(event.id) do %>
-          <%= event.start %>
+          <%= l event.start, format: :long %>
           <% end %>
           </td>
           <td>

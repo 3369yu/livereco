@@ -32,14 +32,14 @@
               <% end %>
               <% elsif user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "Home", home_path,  class: "mr-3" %>
+                  <%= link_to "Home", root_path,  class: "mr-3" %>
                 </li>
                 <li class="nav-item">
                   <i class="fa-regular fa-id-card"></i>
                   <%= link_to "My page", user_path(current_user.id),  class: "mr-3" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "スケジュール", root_path, class: "mr-3" %>
+                  <%= link_to "スケジュール", events_path, class: "mr-3" %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "追加", new_event_path, class: "mr-3" %>

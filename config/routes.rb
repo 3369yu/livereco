@@ -9,13 +9,12 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    root to: "events#index"
-    get '/events', to: 'events#index', defaults: { format: 'json' }
-    get '/home' => 'homes#top'
+    root to: 'homes#top'
+    get '/events/calendar', to: 'events#index', defaults: { format: 'json' }
     get 'homes/about' => 'homes#about', as: :about
     resources :users, only: [:show, :edit, :update, :destroy]
 
-    resources :events, only: [:show, :new, :edit, :create, :update, :destroy] do
+    resources :events do
       collection do
         get 'history'
       end

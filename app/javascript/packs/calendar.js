@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     plugins: [dayGridPlugin, listPlugin],　//listPluginを追加
     initialView: 'dayGridMonth',
     locale: "jp", //日本語対応
-    events: '/events',
+    events: '/events/calendar',
     //レスポンシブ処理
     windowResize: function () {
         if (window.innerWidth < 991.98) {
@@ -18,13 +18,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     },
     
+    headerToolbar: {
+          start: '',
+          center: 'title',
+          end: 'today prev,next' 
+    },
+    allDayText: '終日',
+    height: "auto",
+
     dateClick: function(info){
             //日付をクリックしたときのイベント
     },
     eventClick: function(info){
             //表示されたイベントをクリックしたときのイベント
     },
-    
+
   });
 
   calendar.render();
