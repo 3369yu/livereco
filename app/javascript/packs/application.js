@@ -11,6 +11,7 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
+window.$ = window.jQuery = require('jquery');
 import "../stylesheets/application";
 import './calendar';
 

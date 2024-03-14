@@ -3,6 +3,9 @@ class Public::EventsController < ApplicationController
 
   def new
     @event = Event.new
+    if params[:date].present?
+      @current_date = params[:date] 
+    end
   end
 
   def create

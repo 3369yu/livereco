@@ -1,11 +1,13 @@
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import listPlugin from "@fullcalendar/list";
+import interactionPlugin from '@fullcalendar/interaction';
 
-document.addEventListener('DOMContentLoaded', function() {
+$(document).on('turbolinks:load', function() {
   var calendarEl = document.getElementById('calendar');
-  var calendar = new Calendar(calendarEl, {
-    plugins: [dayGridPlugin, listPlugin],　//listPluginを追加
+  if (calendarEl) {
+    var calendar = new Calendar(calendarEl, {
+    plugins: [dayGridPlugin, listPlugin, interactionPlugin],　//listPluginを追加
     initialView: 'dayGridMonth',
     locale: "jp", //日本語対応
     events: '/events/calendar',
@@ -27,16 +29,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //日付をクリックしたときのイベント
     dateClick: function(info) {
-        var clickedDate = info.dateStr;
-        location.href = '/event/new?date=' + clickedDate;
+        window.location.href = '/events/new?date=' + info.dateStr;
+        //var clickedDate = info.dateStr;
+        //location.href = '/event/new?date=' + clickedDate;
     },
 
      //表示されたイベントをクリックしたときのイベント
-    eventClick: function(info){
-           
+    eventClick: function(arg){
+      var editUrl = '/events/' + arg.event.id + '/edit'
+      window.location.href = editUrl;
     },
 
   });
-
   calendar.render();
+  }
 });

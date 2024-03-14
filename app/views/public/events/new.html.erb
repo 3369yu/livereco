@@ -14,7 +14,11 @@
         </tr>
         <tr>
           <td>日時</td>
-          <td><%= f.datetime_field :start %></td>
+          <% if @current_date.present? %>
+            <td><%= f.datetime_field :start, value: "#{@current_date}T00:00" %></td>
+          <% else %>
+            <td><%= f.datetime_field :start %></td>
+          <% end %>
         </tr>
         <tr>
           <td>会場</td>
