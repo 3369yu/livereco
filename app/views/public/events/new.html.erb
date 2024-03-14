@@ -38,7 +38,11 @@
         </tr>
         <tr>
           <td>終演</td>
-          <td><%= f.datetime_field :end %></td>
+          <% if @current_date.present? %>
+            <td><%= f.datetime_field :end, value: "#{@current_date}T00:00" %></td>
+          <% else %>
+            <td><%= f.datetime_field :start %></td>
+          <% end %>
         </tr>
         <tr>
           <td>チケット料金</td>
