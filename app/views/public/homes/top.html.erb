@@ -1,25 +1,25 @@
 <div class='container'>
   <div class= 'row'>
-    <h1>ライブレコとは</h1>
+    <h1 class= "col-md-8 offset-2 text-center">ライブレコとは</h1>
   </div>
-  
+
   <div class= 'row'>
-    <div class= "col-md-10text-ceate">
+    <div class= "col-md-8 offset-2 text-center">
       ライブ参戦記録アプリです。</br>
       参戦したライブやコンサートを記録することができます。
     </div>
   </div>
-  
+
   <div class= 'row'>
-    <div class="btn-wrapper col-md-10 mx-auto">
+    <div class="col-md-8 offset-2 align-items-center justify-content-center">
       <div class="row">
-        <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+        <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-secondary btn-sm mb-3 w-50", method: :post %>
       </div>
       <div class="row">
-        <%= link_to "Log in",new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+        <%= link_to "ログイン",new_user_session_path, class: "btn btn-info btn-sm mb-3 w-50" %>
       </div>
       <div class="row">
-         <%= link_to "Sign Up",new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+         <%= link_to "会員登録",new_user_registration_path, class: "btn btn-success btn-sm w-50" %>
       </div>
     </div>
 </div>

@@ -3,11 +3,11 @@
     <div class="alert alert-success"><%= notice %></div>
   <% end %>
   <div class="row">
-    <h3 class="col-md-6 text-center">ユーザー一覧</h3>
+    <h3 class="col-md-6 my-3 offset-md-3 text-center">ユーザー一覧</h3>
   </div>
 
   <div class="row">
-    <div class="col-md-6 d-flex justify-content-center">
+    <div class="col-md-6 mb-3 offset-md-3 d-flex aline-items-center justify-content-center">
       <table class="table table-bottom-boder">
         <thead>
         <tr>
@@ -34,7 +34,7 @@
   </div>
   <div class="row">
     <div col="col-md-6 text-center">
-      <%= paginate.@users %>
+      <%= paginate @users %>
     </div>
   </div>
 </div>
