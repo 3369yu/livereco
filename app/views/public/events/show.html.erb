@@ -16,7 +16,7 @@
         </tr>
         <tr>
           <td>日時</td>
-          <td><%= @event.start %></td>
+          <td><%= l @event.start, format: :long %></td>
         </tr>
         <tr>
           <td>会場</td>
@@ -93,7 +93,7 @@
         </tr>
         <tr>
           <td>日時</td>
-          <td><%= @event.event_data %></td>
+          <td><%= l @event.start, format: :long %></td>
         </tr>
         <tr>
           <td>会場</td>

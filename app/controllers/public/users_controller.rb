@@ -9,7 +9,7 @@ class Public::UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -20,11 +20,12 @@ class Public::UsersController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    flash[:notice] = "退会しました。"
-    redirect_to :root
+    if @user.destroy
+      flash[:notice] = "退会しました。"
+      redirect_to :root
+    end
   end
 
   def ensure_guest_user

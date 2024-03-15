@@ -4,7 +4,7 @@
   </div>
   
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 mt-3 offset-3">
       <%= form_with model: @user do |f| %>
       <%= image_tag @user.get_profile_image(100,100) %>
       <%= f.file_field :profile_image %>
