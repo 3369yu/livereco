@@ -1,6 +1,9 @@
 <div class="container">
+  <% if flash[:notice] %>
+    <div class="alert alert-success"><%= notice %></div>
+  <% end %>
   <div class="row">
-    <h3 class="col-md-6 text-center"><%= @user.name %>さんの会員情報</h3>
+    <h3 class="col-md-6 my-3 offset-3 text-center"><%= @user.name %>さんの会員情報</h3>
   </div>
 
   <div class="row">
@@ -18,6 +21,7 @@
       </table>
     </div>
   </div>
+  <% unless @user.guest_user? %>
   <div class="row">
     <div class="col-md-6 d-flex justify-content-center">
       <%= link_to "編集", edit_user_path(@user.id), class: "btn btn-success mx-2" %>
@@ -25,3 +29,9 @@
       <%= link_to "退会する", user_path(current_user.id), method: :delete, "data-confirm" =>"本当に消しますか？", class: "btn btn-danger mx-2" %>
     </div>
   </div>
+  <% else %>
+  <div class="row d-flex justify-content-center">
+    <%= link_to "",edit_user_path(@user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@user.id} w-25" %>
+  </div>
+  <% end %>
+</div>
