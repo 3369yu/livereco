@@ -14,7 +14,7 @@ module Livereco
     config.i18n.default_locale = :ja
 
     config.time_zone = 'Asia/Tokyo'
-    #config.active_record.default_timezone = :local
+    config.active_record.default_timezone = :local
 
     # Configuration for the application, engines, and railties goes here.
     #
