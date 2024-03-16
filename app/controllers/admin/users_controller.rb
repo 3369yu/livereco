@@ -22,11 +22,11 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
     @user = User.find(params[:id])
     @user.destroy
     flash[:notice] = "退会しました。"
-    redirect_to :root
+    redirect_to :admin_root
   end
 
   private
