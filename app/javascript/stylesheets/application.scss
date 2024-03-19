@@ -1,7 +1,11 @@
 @use '~bootstrap/scss/bootstrap';
 
-@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700');
+//@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700');
+
+.navbar .navbar-nav .nav-item {
+  color: rgba(0,0,255,1);
+}
 
 body {
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-family: "BIZ UDGothic", sans-serif;
 }

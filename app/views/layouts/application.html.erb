@@ -13,11 +13,11 @@
 
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" data-bs-theme="dark">
+        <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #000000;">
           <div class="container">
-          <a class="navbar-brand p-3" href="/">ライブレコ</a>
+          <a class="navbar-brand p-3" href="/"><%= image_tag('logo.jpg', :size =>'175x50') %></a>
 
-          <div class="col-md-10 text-right">
+          <div class="col-md-10 text-light">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -51,7 +51,7 @@
                   <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "mr-3" %>
                 </li>
                 <div class="text-right mt-2">
-                  <form class="right-block mb-3">
+                  <form class="right-block">
                     <%= form_with url: history_events_path, method: :get do |f| %>
                     <%= f.text_field :name, placeholder:"アーティスト名を入力" %>
                     <%= f.submit'検索'%>
@@ -69,7 +69,7 @@
                   <%= link_to "ログイン", new_user_session_path,  class: "mr-3" %>
                 </li>
                 <div class="text-right mt-2">
-                  <form class="right-block mb-3">
+                  <form class="right-block">
                     <%= form_with url: '/events/history', method: :get do |f| %>
                     <%= f.text_field :name, placeholder:"Search" %>
                     <%= f.submit'検索'%>
