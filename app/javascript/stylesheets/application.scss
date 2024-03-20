@@ -24,8 +24,19 @@ main {
   height: 100%;
 }
 
+.calendar {
+  link-color: linke-light;
+}
 
-footer {
-  height: 100%;
-  margin: 0;
+li {
+  margin-right: 20px;
+}
+
+.link {
+    text-decoration: none;
+    color: white ;
+}
+
+.fc-dayGridMonth {
+	color: white;
 }

@@ -1,18 +1,18 @@
-<div class='container'>
+<div class='container-fluid h-100' style="background-color: #000000;">
   <div class= 'row'>
-    <h2 class= 'col-md-6 my-3 offset-3 text-center'>ログイン</h2>
+    <h2 class= 'col-md-6 my-3 offset-3 text-center' style="color: #FFFFFF">ログイン</h2>
   </div>
 
   <%= form_with model:@user, url: user_session_path do |f| %>
   <div class= 'row'>
-    <div class= 'col-md-6 mt-3 offset-3 text-center'>
+    <div class= 'col-md-6 mt-3 offset-3 text-center' style="color: #FFFFFF">
       <%= f.label :"メールアドレス" %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
   </div>
 
   <div class= 'row'>
-    <div class= 'col-md-6 mt-3 offset-3 text-center'>
+    <div class= 'col-md-6 mt-3 offset-3 text-center' style="color: #FFFFFF">
       <%= f.label :"パスワード" %><br />
       <%= f.password_field :password, autocomplete: "current-password" %>
     </div>
@@ -26,7 +26,7 @@
   <% end %>
 
   <div class= 'row'>
-    <div class= 'col-md-6 mt-3 offset-3 text-center'>
+    <div class= 'col-md-6 mt-3 offset-3 text-center' style="color: #FFFFFF">
       登録がお済ではない方は<%= link_to "こちら", new_user_registration_path %>から登録してください。
     </div>
   </div>

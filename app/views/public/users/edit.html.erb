@@ -1,14 +1,14 @@
-<div class="container">
+<div class='container-fluid h-100' style="background-color: #000000;">
   <div class="row">
-    <h3 class="col-md-6 my-3 offset-3 text-center"><%= @user.name %>さんの会員情報編集</h3>
+    <h3 class="col-md-6 offset-3 my-3 text-center" style="color: #FFFFFF"><%= @user.name %>さんの会員情報編集</h3>
   </div>
 
   <div class="row">
-    <div class="col-md-6 my-3 offset-3 d-flex justify-content-center">
+    <div class="col-md-4 my-3 offset-4 d-flex justify-content-center">
       <%= form_with model: @user do |f| %>
       <%= image_tag @user.get_profile_image(100,100) %>
       <%= f.file_field :profile_image %>
-      <table class="table table-borderless">
+      <table class="table table-boderless mt-3" style="color: #FFFFFF">
         <tr>
           <td>ユーザー名</td>
           <td><%= f.text_field :name %></td>
@@ -21,7 +21,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6 my-3 offset-3 d-flex justify-content-center">
+    <div class="col-md-4 offset-4 my-3 d-flex aline-items-center justify-content-center">
       <%= f.submit "変更", class: "btn btn-primary md-3" %>
       <%= link_to "退会する", user_path(current_user.id), method: :delete, "data-confirm" =>"本当に消しますか？", class: "btn btn-danger ml-2" %>
     </div>

@@ -1,12 +1,12 @@
-<div class='container'>
+<div class='container-fluid h-100' style="background-color: #000000;">
   <div class= 'row'>
-    <h2 class= 'col-md-6 my-3 offset-3 d-flex justify-content-center'>Admin Log in</h2>
+    <h2 class= 'col-md-6 my-3 offset-3 d-flex justify-content-center' style="color: #FFFFFF">Admin Log in</h2>
   </div>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class= 'row'>
-    <div class= 'col-md-6 mt-3 offset-3 d-flex justify-content-center'>
-      <table class="table table-borderless">
+    <div class= 'col-md-6 mt-3 offset-3'>
+      <table class="table table-borderless d-flex align-items-center justify-content-center" style="color: #FFFFFF">
         <tr>
           <td><%= f.label :email %></td>
           <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
@@ -20,12 +20,11 @@
   </div>
 
   <div class= 'row'>
-    <div class= 'col-md-6 offset-3 d-flex justify-content-center'>
+    <div class= 'col-md-6 offset-3 d-flex justify-content-center' style="color: #FFFFFF">
       <%= f.submit "Log in" %>
     </div>
   </div>
   <% end %>
-</div>
 
   <div class= 'row'>
     <div class= 'col-md-6 my-3 offset-3 d-flex justify-content-center'>
