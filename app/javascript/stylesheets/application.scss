@@ -8,4 +8,24 @@
 
 body {
   font-family: "BIZ UDGothic", sans-serif;
+  height: 100%;
+  margin: 0;
+}
+
+//.main .container-fluid {
+  //background-image: url('app/assets/images/bg.jpg') var(--bg-gradient)!important;
+//}
+
+main {
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+}
+
+
+footer {
+  height: 100%;
+  margin: 0;
 }
