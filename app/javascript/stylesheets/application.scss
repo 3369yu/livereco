@@ -29,14 +29,40 @@ main {
 }
 
 li {
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .link {
-    text-decoration: none;
-    color: white ;
+  text-decoration: none;
+  color: #FFF;
 }
 
-.fc-dayGridMonth {
-	color: white;
+i {
+  color: #FFF;
+}
+.fc .fc-daygrid-day-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.fc-col-header-cell-cushion {
+  color: #FFF;
+}
+
+.fc-daygrid-day-number {
+  color: #FFF;
+}
+
+.fc-event-dot  {
+  color: #FFF!important;
+}
+
+.fc-event-time {
+  color: #FFF;
+}
+
+.fc-event-title {
+  color: #FFF;
 }

@@ -4,7 +4,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-4 my-3 offset-4 d-flex justify-content-center">
+    <div class="col-md-4 my-3 offset-4 d-flex justify-content-center" style="color: #FFFFFF">
       <%= form_with model: @user do |f| %>
       <%= image_tag @user.get_profile_image(100,100) %>
       <%= f.file_field :profile_image %>
