@@ -12,10 +12,6 @@ body {
   margin: 0;
 }
 
-//.main .container-fluid {
-  //background-image: url('app/assets/images/bg.jpg') var(--bg-gradient)!important;
-//}
-
 main {
   height: 100%;
 }
@@ -26,7 +22,7 @@ main {
 
 
 .calendar {
-  link-color: linke-light;
+  link-color: link-light;
 }
 
 li {
@@ -66,4 +62,9 @@ i {
 
 .fc-event-title {
   color: #FFF;
+}
+
+.container-fluid-top {
+  background-image: url('bg.jpg');
+  background-size: cover;
 }
