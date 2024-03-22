@@ -1,14 +1,19 @@
-<div class='container-fluid h-100' style="background-color: #000000;">
-  <% if flash[:notice] %>
-    <div class="alert alert-light"><%= notice %></div>
-  <% end %>
+<div class='container-fluid h-100' style="background-color: #000;">
   <div class="row">
-    <h3 class="col-md-4 my-3 offset-md-4 text-center" style="color: #FFFFFF">ユーザー一覧</h3>
+    <div class="col-md-4 offset-4 mb-3 d-flex aline-items-center justify-content-center">
+      <% if flash[:notice] %>
+        <div class="alert alert-light"><%= notice %></div>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <h3 class="col-md-4 offset-4 my-3 text-center" style="color: #FFF">ユーザー一覧</h3>
   </div>
 
   <div class="row">
-    <div class="col-md-4 mb-3 offset-4" style="color: #FFFFFF">
-      <table class="table table-bottom-boder" style="color: #FFFFFF">
+    <div class="col-md-4 offset-4 mb-3" style="color: #FFF">
+      <table class="table table-bottom-boder" style="color: #FFF">
         <thead>
         <tr>
         <th></th>
@@ -33,7 +38,7 @@
     </div>
   </div>
   <div class="row d-flex aline-items-center justify-content-center">
-    <div col="col-md-4 offset-4 md-3" style="color: #FFFFFF">
+    <div col="col-md-4 offset-4 md-3" style="color: #FFF">
       <%= paginate @users %>
     </div>
   </div>

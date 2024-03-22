@@ -12,7 +12,7 @@ class Public::EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user_id = current_user.id
     if @event.save
-       flash[:notice] = "スケジュールを登録しました"
+       flash[:notice] = "スケジュールを登録しました。"
        redirect_to event_path(@event.id)
     else
        render :index
@@ -43,7 +43,7 @@ class Public::EventsController < ApplicationController
     ensure_correct_user
     @event = Event.find(params[:id])
     if @event.update(event_params)
-      flash[:notice] = "編集しました"
+      flash[:notice] = "編集しました。"
       redirect_to @event
     else
       render :edit
@@ -54,7 +54,7 @@ class Public::EventsController < ApplicationController
     ensure_correct_user
     event = Event.find(params[:id])
     if event.destroy
-     flash[:notice] = "削除しました"
+     flash[:notice] = "削除しました。"
       redirect_to events_path
     else
       render :edit

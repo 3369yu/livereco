@@ -9,21 +9,9 @@
 body {
   font-family: "BIZ UDGothic", sans-serif;
   height: 100%;
-  margin: 0;
+  margin: auto;
 }
 
-main {
-  height: 100%;
-}
-
-.container {
-  height: 100%;
-}
-
-
-.calendar {
-  link-color: link-light;
-}
 
 li {
   margin-right: 10px;
@@ -37,6 +25,11 @@ li {
 i {
   color: #FFF;
 }
+
+.calendar {
+  link-color: link-light;
+}
+
 .fc .fc-daygrid-day-top {
   display: flex;
   align-items: center;

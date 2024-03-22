@@ -1,15 +1,20 @@
-<div class='container-fluid h-100' style="background-color: #000000;">
-  <% if flash[:notice] %>
-    <div class="alert alert-success"><%= notice %></div>
-  <% end %>
+<div class='container-fluid h-100' style="background-color: #000;">
   <div class="row">
-    <h3 class="col-md-6 offset-3 my-3 text-center" style="color: #FFFFFF">Live記録</h3>
+    <div class="col-md-6 offset-3 my-3 d-flex justify-content-center">
+      <% if flash[:notice] %>
+        <div class="alert alert-success"><%= notice %></div>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <h3 class="col-md-6 offset-3 my-3 text-center" style="color: #FFF">Live記録</h3>
   </div>
 
   <% if @event.user_id == current_user.id %>
   <div class="row">
     <div class="col-md-6 offset-3 my-3 d-flex justify-content-center">
-      <table class="table table-borderless" style="color: #FFFFFF">
+      <table class="table table-borderless" style="color: #FFF">
         <tr>
           <td>アーティスト名</td>
           <td><%= @event.name %></td>
@@ -78,14 +83,14 @@
       </div>
     </div>
     <div class="row">
-    <div class="col-md-6 offset-3 my-3 d-flex justify-content-center" style="color: #FFFFFF">
+    <div class="col-md-6 offset-3 my-3 d-flex justify-content-center" style="color: #FFF">
       <%= link_to "編集", edit_event_path(@event.id), class: "btn btn-success mr-2" %>
       <%= link_to "削除", event_path(@event), method: :delete, "data-confirm" =>"本当に消しますか？", class: "btn btn-danger ml-2" %>
     </div>
     </div>
   <% else %>
     <div class="row">
-    <div class="col-md-6 offset-3 my-3 d-flex justify-content-center" style="color: #FFFFFF">
+    <div class="col-md-6 offset-3 my-3 d-flex justify-content-center" style="color: #FFF">
       <table class="table table-borderless">
         <tr>
           <td>アーティスト名</td>

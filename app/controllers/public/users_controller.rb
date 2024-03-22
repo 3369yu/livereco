@@ -13,7 +13,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "編集しました"
+      flash[:notice] = "編集しました。"
       redirect_to @user
     else
       render :edit

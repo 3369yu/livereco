@@ -1,7 +1,11 @@
 <div class='container-fluid h-100' style="background-color: #000000;">
-  <% if flash[:notice] %>
-    <div class="alert alert-success"><%= notice %></div>
-  <% end %>
+  <div class="row">
+    <div class="col-md-6 offset-3 d-flex aline-items-center justify-content-center">
+      <% if flash[:notice] %>
+        <div class="alert alert-success"><%= notice %></div>
+      <% end %>
+    </div>
+  </div>
   <div class="row pt-5">
     <h3 class="col-md-6 offset-3 my-3 text-center" style="color: #FFFFFF"><%= @user.name %>さんの会員情報</h3>
   </div>

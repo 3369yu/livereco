@@ -1,13 +1,18 @@
 <div class='container-fulid h-100' style="background-color: #000;">
-  <% if flash[:notice] %>
-    <div class="alert alert-success"><%= notice %></div>
-  <% end %>
-  <div class="row">
-    <h3 class="col-md-10 offset-1 py-2 text-center" style="color: #FFF">参戦スケジュール</h3>
+  <div class="row d-flex aline-items-center justify-content-center">
+    <div class="col-md-10 offset-1">
+      <% if flash[:notice] %>
+        <div class="alert alert-success"><%= notice %></div>
+      <% end %>
+    </div>
   </div>
 
-  <div class="row d-flex aline-items-center justify-content-center" style="color: #FFF">
-    <div class="col-md-10 offset-1">
+  <div class="row">
+    <h3 class="col-md-10 offset-1 my-3 text-center" style="color: #FFF">参戦スケジュール</h3>
+  </div>
+
+  <div class="row" style="color: #FFF">
+    <div class="col-md-10 offset-1 my-3">
       <div id="calendar"></div>
     </div>
   </div>
