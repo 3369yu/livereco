@@ -8,6 +8,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
     user_path(current_user.id)
   end
 
+  def configure_account_update
+    user_path(current_user.id)
+  end
+
   # GET /resource/sign_up
   # def new
   #   super
