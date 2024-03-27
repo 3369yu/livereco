@@ -8,6 +8,9 @@ class Event < ApplicationRecord
   enum buy: { no_buy: 0, buy: 1 }
   enum status: { closed: 0, opened: 1 }
 
+  validates :name, presence: true
+  validates :start, presence: true
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/noimage.jpg')

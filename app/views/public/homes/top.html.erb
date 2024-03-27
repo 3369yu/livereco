@@ -1,4 +1,12 @@
 <div class='container-fluid-top h-100'>
+  <div class="row">
+    <div class="col-md-8 offset-2 d-flex justify-content-center">
+      <% if flash[:notice] %>
+        <div class="alert alert-success"><%= notice %></div>
+      <% end %>
+    </div>
+  </div>
+
   <div class= 'row'>
     <h1 class= "col-md-8 my-4 offset-2 text-center" style="color: #FFF">ライブレコとは</h1>
   </div>

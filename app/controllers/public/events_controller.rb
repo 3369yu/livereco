@@ -15,7 +15,7 @@ class Public::EventsController < ApplicationController
        flash[:notice] = "スケジュールを登録しました。"
        redirect_to event_path(@event.id)
     else
-       render :index
+       render :new
     end
   end
 
@@ -35,12 +35,10 @@ class Public::EventsController < ApplicationController
   end
 
   def edit
-    ensure_correct_user
     @event = Event.find(params[:id])
   end
 
   def update
-    ensure_correct_user
     @event = Event.find(params[:id])
     if @event.update(event_params)
       flash[:notice] = "編集しました。"
@@ -51,7 +49,6 @@ class Public::EventsController < ApplicationController
   end
 
   def destroy
-    ensure_correct_user
     event = Event.find(params[:id])
     if event.destroy
      flash[:notice] = "削除しました。"
@@ -62,13 +59,14 @@ class Public::EventsController < ApplicationController
   end
 
   def history
+    @events = Event.all
     if params[:name].present?
       @name = params[:name]
       @events = Event.where(['name LIKE ?', "%#{@name}%"]).where(status: 'opened').order(start: "DESC").page(params[:page])
     elsif params[:start_data].present? || params[:end_data].present?
       @start_data = DateTime.parse(params[:start_data])
       @end_data = DateTime.parse(params[:end_data])
-      @events = Event.where(start: @start_data..@end_data).where(status: 'opened').order(start: "DESC").page(params[:page])
+      @events = current_user.events.where(start: @start_data..@end_data).order(start: "DESC").page(params[:page])
     else
       @events = current_user.events.order(start: "DESC").page(params[:page])
       #Event.where(user_id: current_user.id)

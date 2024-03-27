@@ -36,7 +36,7 @@ $(document).on('turbolinks:load', function() {
 
      //表示されたイベントをクリックしたときのイベント
     eventClick: function(arg){
-      var editUrl = '/events/' + arg.event.id + '/edit'
+      var editUrl = '/events/' + arg.event.id
       window.location.href = editUrl;
     },
 
