@@ -27,5 +27,6 @@
 - IDE：Cloud9
 
 ## 使用素材
-- 使用検討中
+- ロゴ　DesignEvo(https://www.designevo.com/jp/)  
+- アイコン　Font Awesome(https://fontawesome.com/)
 
